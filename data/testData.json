@@ -1,0 +1,12 @@
+{
+  "products": {
+    "blueTShirt": {
+      "name": "Blue T-Shirt",
+      "price": 9.00
+    },
+    "blackWhiteStripesTShirt": {
+      "name": "Black T-shirt with white stripes",
+      "price": 14.90
+    }
+  }
+}
