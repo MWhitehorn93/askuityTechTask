@@ -18,7 +18,7 @@ export class HomePage {
         await expect(this.page).toHaveURL(this.url);
     } 
 
-    async filterBySize(size: 'XS' | 'S' | 'M' | 'ML' | 'L' | 'XL') {
+    async filterBySize(size: string) {
         await this.page.locator(`label:has-text("${size}")`).click();
     }
 
