@@ -36,6 +36,8 @@ test('Filter by size and products to cart and assert cart logic', async ({ page 
 
     await cartPage.assertDistinctItemsInCart(2);
 
+    await page.pause();
+
     await cartPage.increaseProductQuantity(blueTShirtName, 2);
 
     let subTotal = await cartPage.getCartSubtotal();
