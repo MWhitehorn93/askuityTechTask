@@ -1,14 +1,14 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../../pages/homePage';
 import { CartPage } from '../../pages/cartPage';
+import testData from '../../data/testData.json' assert { type: 'json' };
+
+const { name: blueTShirtName, price: blueTShirtValue } = testData.products.blueTShirt;
+const { name: blackWhiteStripesTShirtName, price: blackWhiteStripesTShirtValue } = testData.products.blackWhiteStripesTShirt;
 
 const filterSizeXS = 'XS';
 const filterSizeML = 'ML';
 const expectedNumberOfProductsAfterFilter = 3;
-const blueTShirtName = 'Blue T-Shirt';
-const blackWhiteStripesTShirtName = 'Black T-shirt with white stripes';
-const blueTShirtValue = 9.00;
-const blackWhiteStripesTShirtValue = 14.90;
 
 test.beforeEach(async ({ page }) => {
     const homePage = new HomePage(page);
