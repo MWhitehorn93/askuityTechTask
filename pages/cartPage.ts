@@ -24,18 +24,34 @@ export class CartPage {
         }
     }
 
+    async reduceProductQuantity(productName: string, times: number) {
+        const cartItem = this.page.getByRole('img', { name: productName }).locator('..');
+        const incrementButton = cartItem.getByRole('button', { name: '-' });
+
+            for (let i = 0; i < times; i++) {
+                await incrementButton.click();
+        }
+    }
+
+    async assertReducedQuantityButtonDisabled(productName: string) {
+        const cartItem = this.page.getByRole('img', { name: productName }).locator('..');
+        const reduceButton = cartItem.getByRole('button', { name: '-' });
+        await expect(reduceButton).toBeDisabled();
+    }   
+
     async getCartSubtotal(): Promise<number> {
-    const subtotalContainer = this.page.locator('p', { hasText: 'SUBTOTAL' }).locator('..');
-    const subtotalText = await subtotalContainer.locator('p', { hasText: '$' }).first().textContent();
-    if (!subtotalText) throw new Error('Subtotal amount not found in cart');
-    const value = parseFloat(subtotalText.replace('$', '').trim());
-    return value;
+        const subtotalContainer = this.page.locator('p', { hasText: 'SUBTOTAL' }).locator('..');
+        const subtotalText = await subtotalContainer.locator('p', { hasText: '$' }).first().textContent();
+
+        if (!subtotalText) throw new Error('Subtotal amount not found in cart');
+        const value = parseFloat(subtotalText.replace('$', '').trim());
+        return value;
     }
 
 async removeProductFromCart(productName: string) {
-    const cartItem = this.page.getByRole('img', { name: productName }).locator('..');
-    const removeButton = cartItem.getByRole('button', { name: 'remove product from cart' });
-    await removeButton.click();
-    await expect(cartItem).toHaveCount(0);
+        const cartItem = this.page.getByRole('img', { name: productName }).locator('..');
+        const removeButton = cartItem.getByRole('button', { name: 'remove product from cart' });
+        await removeButton.click();
+        await expect(cartItem).toHaveCount(0);
     }
 }
