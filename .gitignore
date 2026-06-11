@@ -1,0 +1,16 @@
+node_modules/
+
+logs/
+*.log
+
+allure-results/
+allure-report/
+
+coverage/
+
+.vscode/
+
+.DS_Store
+
+.env
+
