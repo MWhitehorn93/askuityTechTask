@@ -1,0 +1,20 @@
+{
+    "users": {
+        "swiftTester": {
+            "username": "swift_tester",
+            "password": "test_sauce"
+        },
+        "vaultLocked": {
+            "username": "vault_locked",
+            "password": "test_sauce"
+            },
+        "buggyAgent": {
+            "username": "buggy_agent",
+            "password": "test_sauce"
+            },
+        "mirageUser": {
+            "username": "mirage_user",
+            "password": "test_sauce"
+            }
+    }
+}
