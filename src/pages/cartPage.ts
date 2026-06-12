@@ -56,5 +56,7 @@ class cartPage {
         const tax = subtotal * taxRate;
         return subtotal + tax;
     }
+
+    
 }
 export default new cartPage();

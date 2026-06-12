@@ -23,6 +23,12 @@
             "selector": "automation-handbook",
             "price": 24.99,
             "ID": "11"
+        },
+        "debugSocks": {
+            "name": "Debug Socks",
+            "selector": "debug-socks",
+            "price": 8.99,
+            "ID": "12"
         }
     },
     "taxRate": 0.08

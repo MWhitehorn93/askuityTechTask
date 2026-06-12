@@ -45,4 +45,21 @@ describe("Cart Functionality", () => {
             testData.taxRate);
         await expect(cartPage.totalPrice).toHaveText(`$${expectedTotalPriceAfterDecrease.toFixed(2)}`);
     });
+
+    it('Cart Pricing is correct when multiple items are added', async () => {
+        await homePage.addProductToCartButton(testData.products.automationHandbook.selector).click();
+        await homePage.addProductToCartOpenCart(testData.products.debugSocks.selector);
+        await homePage.shoppingCartIcon.click();
+
+        await expect(cartPage.cartItem(testData.products.automationHandbook.name)).toBeDisplayed();
+        await expect(cartPage.cartItem(testData.products.debugSocks.name)).toBeDisplayed();
+
+        const subTotal =
+            testData.products.automationHandbook.price +
+            testData.products.debugSocks.price;
+        const expectedTotalPrice = subTotal *  (1 + testData.taxRate);
+
+        await expect(cartPage.totalPrice).toHaveText(`$${expectedTotalPrice.toFixed(2)}`);
+
+    });
 });
