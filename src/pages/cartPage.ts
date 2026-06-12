@@ -57,6 +57,20 @@ class cartPage {
         return subtotal + tax;
     }
 
-    
+    async calculateCartTotalPrice(
+        items: Array<{ productID: string; productPrice: number }>,
+        taxRate: number
+    ) {
+        let subtotal = 0;
+
+        for (const item of items) {
+            const quantityText = await this.cartItemQuauntity(item.productID).getText();
+            const quantity = parseInt(quantityText, 10);
+            subtotal += quantity * item.productPrice;
+        }
+
+        const tax = subtotal * taxRate;
+        return subtotal + tax;
+    }
 }
 export default new cartPage();
