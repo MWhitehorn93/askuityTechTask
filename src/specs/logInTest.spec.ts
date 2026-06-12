@@ -1,8 +1,6 @@
 import loginPage from "../pages/logInPage";
 import testData from "../data/testData.json";
 
-
-
 describe("Login Page", () => {
 
     beforeEach(async () => {
