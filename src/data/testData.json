@@ -15,6 +15,15 @@
         "mirageUser": {
             "username": "mirage_user",
             "password": "test_sauce"
-            }
-    }
+        }
+    },
+    "products": {
+        "automationHandbook": {
+            "name": "Automation Handbook",
+            "selector": "automation-handbook",
+            "price": 24.99,
+            "ID": "11"
+        }
+    },
+    "taxRate": 0.08
 }

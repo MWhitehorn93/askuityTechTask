@@ -17,4 +17,32 @@ describe("Cart Functionality", () => {
         await cartPage.continueShoppingButton.click();
         await expect(browser).toHaveUrl('https://qa-task--oyettijon.replit.app/');
     });
+
+    it("Cart Pricing is correct when cart item is increased", async () => {
+        await homePage.addProductToCartOpenCart(testData.products.automationHandbook.selector);
+        await expect(cartPage.cartItem(testData.products.automationHandbook.name)).toBeDisplayed();
+        
+        await cartPage.increaseItemQuantityButton(testData.products.automationHandbook.ID, 1);
+        await expect(cartPage.cartItemQuauntity(testData.products.automationHandbook.ID)).toHaveText("2");
+        const expectedTotalPrice = await cartPage.calculateCartItemPrice(testData.products.automationHandbook.ID, 
+            testData.products.automationHandbook.price, 
+            testData.taxRate);
+        await expect(cartPage.totalPrice).toHaveText(`$${expectedTotalPrice.toFixed(2)}`);
+
+        
+    });
+
+    it("Cart Pricing is correct when cart items are decreased", async () => {
+        await homePage.addProductToCartOpenCart(testData.products.automationHandbook.selector);
+        await expect(cartPage.cartItem(testData.products.automationHandbook.name)).toBeDisplayed();
+
+        await cartPage.increaseItemQuantityButton(testData.products.automationHandbook.ID, 1);
+
+        await cartPage.decreaseItemQuantityButton(testData.products.automationHandbook.ID, 1);
+        await expect(cartPage.cartItemQuauntity(testData.products.automationHandbook.ID)).toHaveText("1");
+        const expectedTotalPriceAfterDecrease = await cartPage.calculateCartItemPrice(testData.products.automationHandbook.ID, 
+            testData.products.automationHandbook.price, 
+            testData.taxRate);
+        await expect(cartPage.totalPrice).toHaveText(`$${expectedTotalPriceAfterDecrease.toFixed(2)}`);
+    });
 });
