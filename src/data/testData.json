@@ -32,5 +32,9 @@
         }
     },
     "taxRate": 0.08,
-    
+    "checkoutUser": {
+        "firstName": "Joe",
+        "lastName": "Bloggs",
+        "postalCode": "12345"
+    }
 }

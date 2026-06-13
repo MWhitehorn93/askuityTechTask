@@ -11,8 +11,20 @@ describe("Checkout Process", () => {
         await homePage.addProductToCartOpenCart(testData.products.automationHandbook.selector);
     });
 
-    it("User ia able to order a product and ", async () => {
+    it("User is able to complete an order and checkout", async () => {
         await checkoutPage.openCheckoutPage();
+        await checkoutPage.fillCheckoutForm(
+            testData.checkoutUser.firstName, 
+            testData.checkoutUser.lastName, 
+            testData.checkoutUser.postalCode
+        );
+        await checkoutPage.assertShippingInfoDisplayed(
+            testData.checkoutUser.firstName, 
+            testData.checkoutUser.lastName, 
+            testData.checkoutUser.postalCode
+        );
+        await checkoutPage.finishButton.click();
+        await expect(checkoutPage.checkoutSuccessTitle).toHaveText("Order Placed!");
     });
 
 });
