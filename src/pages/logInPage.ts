@@ -14,21 +14,21 @@ class loginPage {
 
 
     async openLoginPage() {
-        await browser.url('https://qa-task--oyettijon.replit.app/login');
+        await browser.url('/login');
     }
 
     async successfulLoginUser(username: string, password: string) {
         await this.usernameInput.setValue(username);
         await this.passwordInput.setValue(password);
         await this.loginButton.click(); 
-        await expect(browser).toHaveUrl('https://qa-task--oyettijon.replit.app/');
+        await expect(browser).toHaveUrl(/\/(?:\?.*)?$/);
     }
 
     async invalidLoginUser(username: string, password: string) {
         await this.usernameInput.setValue(username);
         await this.passwordInput.setValue(password);
         await this.loginButton.click(); 
-        await expect(browser).toHaveUrl('https://qa-task--oyettijon.replit.app/login');
+        await expect(browser).toHaveUrl(/\/login(?:\?.*)?$/);
     }
 
 }

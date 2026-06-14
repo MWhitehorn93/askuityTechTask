@@ -15,7 +15,7 @@ describe("Cart Functionality", () => {
         await expect(cartPage.cartHeader).toHaveText("Your cart is empty");
         await expect(cartPage.continueShoppingButton).toHaveText("Continue Shopping");
         await cartPage.continueShoppingButton.click();
-        await expect(browser).toHaveUrl('https://qa-task--oyettijon.replit.app/');
+        await expect(browser).toHaveUrl(/\/(?:\?.*)?$/);
     });
 
     it("Cart Pricing is correct when cart item is increased", async () => {

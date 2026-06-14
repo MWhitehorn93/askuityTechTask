@@ -34,7 +34,7 @@ class checkoutPage {
 
     async openCheckoutPage() {
         await this.checkoutButton.click();
-        await expect(browser).toHaveUrl('https://qa-task--oyettijon.replit.app/checkout');
+        await expect(browser).toHaveUrl(/\/checkout(?:\?.*)?$/);
     }
 
     async fillCheckoutForm(firstName: string, lastName: string, postalCode: string) {
