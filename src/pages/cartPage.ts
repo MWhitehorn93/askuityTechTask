@@ -25,6 +25,10 @@ class cartPage {
         );
     }
 
+    cartItemQuantity(productID: string) {
+        return $(`[data-test="quantity-item-${productID}"]`);
+    }
+
     async increaseItemQuantityButton(productID: string, clicks: number = 1) {
         const increaseButton = await $(`[data-test="increase-qty-item-${productID}"]`);
         for (let i = 0; i < clicks; i++) {
@@ -39,10 +43,6 @@ class cartPage {
         }
     }
     
-    cartItemQuantity(productID: string) {
-        return $(`[data-test="quantity-item-${productID}"]`);
-    }
-
     async calculateCartItemPrice(productID: string, productPrice: number, taxRate: number) {
         const quantityText = await this.cartItemQuantity(productID).getText();
         const quantity = parseInt(quantityText);
