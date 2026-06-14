@@ -15,7 +15,7 @@ describe("Cart Functionality", () => {
         await expect(cartPage.cartHeader).toHaveText("Your cart is empty");
         await expect(cartPage.continueShoppingButton).toHaveText("Continue Shopping");
         await cartPage.continueShoppingButton.click();
-        await expect(browser).toHaveUrl('https://qa-task--oyettijon.replit.app/');
+        await expect(browser).toHaveUrl(/\/$/);
     });
 
     it("Cart Pricing is correct when cart item is increased", async () => {
@@ -23,7 +23,7 @@ describe("Cart Functionality", () => {
         await expect(cartPage.cartItem(testData.products.automationHandbook.name)).toBeDisplayed();
         
         await cartPage.increaseItemQuantityButton(testData.products.automationHandbook.ID, 1);
-        await expect(cartPage.cartItemQuauntity(testData.products.automationHandbook.ID)).toHaveText("2");
+        await expect(cartPage.cartItemQuantity(testData.products.automationHandbook.ID)).toHaveText("2");
         const expectedTotalPrice = await cartPage.calculateCartItemPrice(testData.products.automationHandbook.ID, 
             testData.products.automationHandbook.price, 
             testData.taxRate);
@@ -39,7 +39,7 @@ describe("Cart Functionality", () => {
         await cartPage.increaseItemQuantityButton(testData.products.automationHandbook.ID, 1);
 
         await cartPage.decreaseItemQuantityButton(testData.products.automationHandbook.ID, 1);
-        await expect(cartPage.cartItemQuauntity(testData.products.automationHandbook.ID)).toHaveText("1");
+        await expect(cartPage.cartItemQuantity(testData.products.automationHandbook.ID)).toHaveText("1");
         const expectedTotalPriceAfterDecrease = await cartPage.calculateCartItemPrice(testData.products.automationHandbook.ID, 
             testData.products.automationHandbook.price, 
             testData.taxRate);

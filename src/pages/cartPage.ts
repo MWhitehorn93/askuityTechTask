@@ -19,14 +19,14 @@ class cartPage {
         return $('[data-test="cart-total"]');
     }
 
-    get cartTotalPrice() {
-        return $('[data-test="cart-total"]');
-    }
-
     cartItem(productName: string) {
         return $(
             `//*[@data-test="cart-item"][contains(normalize-space(.), "${productName}")]`
         );
+    }
+
+    cartItemQuantity(productID: string) {
+        return $(`[data-test="quantity-item-${productID}"]`);
     }
 
     async increaseItemQuantityButton(productID: string, clicks: number = 1) {
@@ -43,12 +43,8 @@ class cartPage {
         }
     }
     
-    cartItemQuauntity(productID: string) {
-        return $(`[data-test="quantity-item-${productID}"]`);
-    }
-
     async calculateCartItemPrice(productID: string, productPrice: number, taxRate: number) {
-        const quantityText = await this.cartItemQuauntity(productID).getText();
+        const quantityText = await this.cartItemQuantity(productID).getText();
         const quantity = parseInt(quantityText);
         
         const unitPrice = productPrice;
@@ -64,7 +60,7 @@ class cartPage {
         let subtotal = 0;
 
         for (const item of items) {
-            const quantityText = await this.cartItemQuauntity(item.productID).getText();
+            const quantityText = await this.cartItemQuantity(item.productID).getText();
             const quantity = parseInt(quantityText, 10);
             subtotal += quantity * item.productPrice;
         }
