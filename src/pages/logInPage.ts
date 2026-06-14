@@ -21,14 +21,14 @@ class loginPage {
         await this.usernameInput.setValue(username);
         await this.passwordInput.setValue(password);
         await this.loginButton.click(); 
-        await expect(browser).toHaveUrl(/\/(?:\?.*)?$/);
+        await expect(browser).toHaveUrl(/\/$/);
     }
 
     async invalidLoginUser(username: string, password: string) {
         await this.usernameInput.setValue(username);
         await this.passwordInput.setValue(password);
         await this.loginButton.click(); 
-        await expect(browser).toHaveUrl(/\/login(?:\?.*)?$/);
+        await expect(browser).toHaveUrl(/\/login$/);
     }
 
 }
