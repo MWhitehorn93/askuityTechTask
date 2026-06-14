@@ -79,10 +79,16 @@
             "ID": "5"
         },
         "testAllTheThingsTShirt": {
-            "name": "Test.allTheThings() T-Shirt (Red)",
+            "name": "Test.allTheThings() T-Shirt",
             "selector": "all-the-things-t-shirt",
             "price": 15.99,
             "ID": "6"
+        }, 
+        "sauceLabsMug": {
+            "name": "Sauce Labs Mug",
+            "selector": "sauce-labs-mug",
+            "price": 14.99,
+            "ID": "7"
         }
     },
     "taxRate": 0.08,
