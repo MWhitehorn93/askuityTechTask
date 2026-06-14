@@ -19,10 +19,6 @@ class cartPage {
         return $('[data-test="cart-total"]');
     }
 
-    get cartTotalPrice() {
-        return $('[data-test="cart-total"]');
-    }
-
     cartItem(productName: string) {
         return $(
             `//*[@data-test="cart-item"][contains(normalize-space(.), "${productName}")]`

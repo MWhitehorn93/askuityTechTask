@@ -112,6 +112,8 @@ describe("Product Page Functionality", () => {
         expect(pricesLowHigh.length).toBeGreaterThan(0);
         assertNumbersAreSorted(pricesLowHigh, "asc");
 
+
+        //This test is currently failing due to the second bug reported in BugReport.md. 
         await productPage.selectSortByVisibleText("Price: High to Low");
         const pricesHighLow = await productPage.getDisplayedProductPrices();
         expect(pricesHighLow.length).toBeGreaterThan(0);

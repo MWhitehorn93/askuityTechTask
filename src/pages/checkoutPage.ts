@@ -33,7 +33,7 @@ class checkoutPage {
     }
 
     async openCheckoutPage() {
-        this.checkoutButton.click();
+        await this.checkoutButton.click();
         await expect(browser).toHaveUrl('https://qa-task--oyettijon.replit.app/checkout');
     }
 
