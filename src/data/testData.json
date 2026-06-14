@@ -24,11 +24,71 @@
             "price": 24.99,
             "ID": "11"
         },
+        "boltTShirt": {
+            "name": "Bolt T-Shirt",
+            "selector": "bolt-t-shirt",
+            "price": 15.99,
+            "ID": "5"
+        },
         "debugSocks": {
             "name": "Debug Socks",
             "selector": "debug-socks",
             "price": 8.99,
             "ID": "12"
+        }, 
+        "labNotebook": {
+            "name": "Lab Notebook",
+            "selector": "lab-notebook",
+            "price": 12.99,
+            "ID": "9"
+        },
+        "qaStickerPack": {
+            "name": "QA Sticker Pack",
+            "selector": "qa-sticker-pack",
+            "price": 4.99,
+            "ID": "10"
+        },
+        "sauceLabsBackpack": {
+            "name": "Sauce Labs Backpack",
+            "selector": "sauce-labs-backpack",
+            "price": 29.99,
+            "ID": "1"
+        },
+        "sauceLabsBikeLight": {
+            "name": "Sauce Labs Bike Light",
+            "selector": "sauce-labs-bike-light",
+            "price": 9.99,
+            "ID": "2"
+        },
+        "sauceLabsFleeceJacket": {
+            "name": "Sauce Labs Fleece Jacket",
+            "selector": "sauce-labs-fleece-jacket",
+            "price": 49.99,
+            "ID": "4"
+        },
+        "sauceLabsHoodie": {
+            "name": "Sauce Labs Hoodie",
+            "selector": "sauce-labs-hoodie",
+            "price": 44.99,
+            "ID": "8"
+        },
+        "sauceLabsOnesie": {
+            "name": "Sauce Labs Onesie",
+            "selector": "sauce-labs-onesie",
+            "price": 7.99,
+            "ID": "5"
+        },
+        "testAllTheThingsTShirt": {
+            "name": "Test.allTheThings() T-Shirt",
+            "selector": "all-the-things-t-shirt",
+            "price": 15.99,
+            "ID": "6"
+        }, 
+        "sauceLabsMug": {
+            "name": "Sauce Labs Mug",
+            "selector": "sauce-labs-mug",
+            "price": 14.99,
+            "ID": "7"
         }
     },
     "taxRate": 0.08,
