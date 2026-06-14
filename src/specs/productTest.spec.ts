@@ -61,6 +61,24 @@ const assertProductsInContainer = async (productNames: readonly string[]): Promi
         await expect(productPage.productContainer).toHaveText(productName, { containing: true });
     }
 };
+
+const assertStringsAreSorted = (values: readonly string[], direction: "asc" | "desc"): void => {
+    const expected = [...values].sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base" }));
+    if (direction === "desc") {
+        expected.reverse();
+    }
+
+    expect(values).toEqual(expected);
+};
+
+const assertNumbersAreSorted = (values: readonly number[], direction: "asc" | "desc"): void => {
+    const expected = [...values].sort((a, b) => a - b);
+    if (direction === "desc") {
+        expected.reverse();
+    }
+
+    expect(values).toEqual(expected);
+};
     
 describe("Product Page Functionality", () => {
 
@@ -75,4 +93,28 @@ describe("Product Page Functionality", () => {
             await assertProductsInContainer(group.names);
         });
     }
+
+    it("Product page sorting works for A-Z, Z-A, low-high and high-low", async () => {
+        await productPage.productFilterDropdown.selectByVisibleText("All categories");
+
+        await productPage.selectSortByVisibleText("Name: A to Z");
+        const namesAZ = await productPage.getDisplayedProductNames();
+        expect(namesAZ.length).toBeGreaterThan(0);
+        assertStringsAreSorted(namesAZ, "asc");
+
+        await productPage.selectSortByVisibleText("Name: Z to A");
+        const namesZA = await productPage.getDisplayedProductNames();
+        expect(namesZA.length).toBeGreaterThan(0);
+        assertStringsAreSorted(namesZA, "desc");
+
+        await productPage.selectSortByVisibleText("Price: Low to High");
+        const pricesLowHigh = await productPage.getDisplayedProductPrices();
+        expect(pricesLowHigh.length).toBeGreaterThan(0);
+        assertNumbersAreSorted(pricesLowHigh, "asc");
+
+        await productPage.selectSortByVisibleText("Price: High to Low");
+        const pricesHighLow = await productPage.getDisplayedProductPrices();
+        expect(pricesHighLow.length).toBeGreaterThan(0);
+        assertNumbersAreSorted(pricesHighLow, "desc");
+    });
 });
