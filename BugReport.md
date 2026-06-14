@@ -15,7 +15,7 @@ Enviroment: Production
 Descripton: Current in production, I am unable to sort from price high to low. Meaning it will be harder for users to find our more expensive products. 
 Priority: 2 - Medium
 Reproduction Steps: Login - Navigate to product page - Click on Sort - Select Price: High to Low
-Expected: I should expect to see the products to be sorted from prices high tro low. 
+Expected: I should expect to see the products to be sorted from prices high to low. 
 Result: The page does not sort and does not respond. 
 Reported by: Matt Whitehorn
 Assinged to: Dev
