@@ -4,7 +4,7 @@ import productPage from "../pages/productPage";
 
 const productGroups = [
     {
-        label: "all",
+        label: "All categories",
         names: [
             testData.products.automationHandbook.name,
             testData.products.sauceLabsBackpack.name,
@@ -21,7 +21,7 @@ const productGroups = [
         ],
     },
     {
-        label: "apparel",
+        label: "Apparel",
         names: [
             testData.products.testAllTheThingsTShirt.name,
             testData.products.sauceLabsFleeceJacket.name,
@@ -31,25 +31,25 @@ const productGroups = [
         ],
     },
     {
-        label: "accessory",
+        label: "Accessories",
         names: [
-            testData.products.automationHandbook.name,
             testData.products.debugSocks.name,
             testData.products.sauceLabsMug.name,
             testData.products.qaStickerPack.name,
+            testData.products.labNotebook.name,
         ],
     },
     {
-        label: "gear",
+        label: "Gear",
         names: [
             testData.products.sauceLabsBackpack.name,
             testData.products.sauceLabsBikeLight.name,
         ],
     },
     {
-        label: "book",
+        label: "Books",
         names: [
-            testData.products.labNotebook.name,
+            testData.products.automationHandbook.name,
         ],
     },
 ] as const;
@@ -71,6 +71,7 @@ describe("Product Page Functionality", () => {
 
     for (const group of productGroups) {
         it(`Product page shows all ${group.label} products correctly`, async () => {
+            await productPage.productFilterDropdown.selectByVisibleText(group.label);
             await assertProductsInContainer(group.names);
         });
     }
