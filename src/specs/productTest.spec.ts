@@ -1,6 +1,11 @@
 import loginPage from "../pages/logInPage";
 import testData from "../data/testData.json";
 import productPage from "../pages/productPage";
+import {
+    assertProductNamesAreSorted,
+    assertProductPricesAreSorted,
+    assertProductsInContainer,
+} from "../helpers/productAssertions";
 
 const productGroups = [
     {
@@ -54,32 +59,6 @@ const productGroups = [
     },
 ] as const;
 
-const assertProductsInContainer = async (productNames: readonly string[]): Promise<void> => {
-    await expect(productPage.productContainer).toBeDisplayed();
-
-    for (const productName of productNames) {
-        await expect(productPage.productContainer).toHaveText(productName, { containing: true });
-    }
-};
-
-const assertStringsAreSorted = (values: readonly string[], direction: "asc" | "desc"): void => {
-    const expected = [...values].sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base" }));
-    if (direction === "desc") {
-        expected.reverse();
-    }
-
-    expect(values).toEqual(expected);
-};
-
-const assertNumbersAreSorted = (values: readonly number[], direction: "asc" | "desc"): void => {
-    const expected = [...values].sort((a, b) => a - b);
-    if (direction === "desc") {
-        expected.reverse();
-    }
-
-    expect(values).toEqual(expected);
-};
-    
 describe("Product Page Functionality", () => {
 
     beforeEach(async () => {
@@ -100,17 +79,17 @@ describe("Product Page Functionality", () => {
         await productPage.selectSortByVisibleText("Name: A to Z");
         const namesAZ = await productPage.getDisplayedProductNames();
         expect(namesAZ.length).toBeGreaterThan(0);
-        assertStringsAreSorted(namesAZ, "asc");
+        assertProductNamesAreSorted(namesAZ, "asc");
 
         await productPage.selectSortByVisibleText("Name: Z to A");
         const namesZA = await productPage.getDisplayedProductNames();
         expect(namesZA.length).toBeGreaterThan(0);
-        assertStringsAreSorted(namesZA, "desc");
+        assertProductNamesAreSorted(namesZA, "desc");
 
         await productPage.selectSortByVisibleText("Price: Low to High");
         const pricesLowHigh = await productPage.getDisplayedProductPrices();
         expect(pricesLowHigh.length).toBeGreaterThan(0);
-        assertNumbersAreSorted(pricesLowHigh, "asc");
+        assertProductPricesAreSorted(pricesLowHigh, "asc");
 
 
         //This test is currently failing due to the second bug reported in BugReport.md. 
@@ -118,6 +97,6 @@ describe("Product Page Functionality", () => {
         await productPage.selectSortByVisibleText("Price: High to Low");
         const pricesHighLow = await productPage.getDisplayedProductPrices();
         expect(pricesHighLow.length).toBeGreaterThan(0);
-        assertNumbersAreSorted(pricesHighLow, "desc");*/
+        assertProductPricesAreSorted(pricesHighLow, "desc");*/
     });
 });

@@ -1,7 +1,7 @@
 import loginPage from "../pages/logInPage";
 import testData from "../data/testData.json";
 
-describe("Login Page", () => {
+describe("Login functionality", () => {
 
     beforeEach(async () => {
         await loginPage.openLoginPage();
