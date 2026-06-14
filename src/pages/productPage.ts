@@ -31,9 +31,7 @@ class productPage {
 
     async getDisplayedProductPrices(): Promise<number[]> {
         const prices = await (await this.productPriceElements).map((element) => element.getText());
-        return prices
-            .map((priceText) => Number(priceText.replace(/[^\d.]/g, "")))
-            .filter((price) => Number.isFinite(price));
+        return prices.map((priceText) => Number(priceText.replace(/[^\d.]/g, ""))).filter((price) => Number.isFinite(price));
     }
 }
 

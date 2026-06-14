@@ -3,7 +3,7 @@ import loginPage from '../pages/logInPage';
 import homePage from '../pages/homePage';
 import checkoutPage from '../pages/checkoutPage';
 
-describe("Checkout Process", () => {
+describe("Checkout functionality", () => {
 
     beforeEach(async () => {
         await loginPage.openLoginPage();
