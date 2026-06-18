@@ -32,6 +32,18 @@ class checkoutPage {
         return $('[data-test="checkout-success-title"]');
     }
 
+    get firstNameError() {
+        return $('[data-test="first-name-error"]');
+    }
+
+    get lastNameError() {
+        return $('[data-test="last-name-error"]');
+    }
+
+    get postalCodeError() {
+        return $('[data-test="postal-code-error"]');
+    }
+
     async openCheckoutPage() {
         await this.checkoutButton.click();
         await expect(browser).toHaveUrl(/\/checkout$/);
@@ -49,6 +61,7 @@ class checkoutPage {
         await expect(this.shippingInfo).toHaveText(lastName, { containing: true });
         await expect(this.shippingInfo).toHaveText(postalCode, { containing: true });
     }
+
 }
 
 export default new checkoutPage();

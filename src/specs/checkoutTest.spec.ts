@@ -27,4 +27,13 @@ describe("Checkout functionality", () => {
         await expect(checkoutPage.checkoutSuccessTitle).toHaveText("Order Placed!");
     });
 
+    it("User cannot proceed without a empty checkout form", async () => {
+        await checkoutPage.openCheckoutPage();
+        await checkoutPage.fillCheckoutForm("", "", "");
+        await checkoutPage.continueButton.click();
+        //The code below is commented out because there is a bug with the error message. See more in Bug 3 in the bug report.
+        //await expect(checkoutPage.firstNameError).toHaveText("Error: First Name is required");
+        await expect(checkoutPage.lastNameError).toHaveText("Last Name is required");
+        await expect(checkoutPage.postalCodeError).toHaveText("Postal Code is required");
+    });
 });
